@@ -10,7 +10,7 @@
 
 ## Description
 
-text
+getting enigma plaintext from german text too difficult thanks to Eigennamen doubling (Named Entity Recognition, Text Classification). Also, since all Sonderzeichen and Satzzeichen are encoded as the same letter "X", decoding an "X" is not possible. Hence, encoding and decoding a plaintext which can then be encrypted/decrypted via enigma is not implemented.
 
 ## Requirements
 
