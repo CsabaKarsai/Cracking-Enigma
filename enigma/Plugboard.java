@@ -1,5 +1,10 @@
 package enigma;
 
-public class Plugboard extends Wheel {
-    
+public class Plugboard extends Wheel implements WheelInterface {
+
+    @Override
+    public String encode(String input) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

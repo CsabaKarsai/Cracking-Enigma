@@ -2,13 +2,9 @@ package enigma;
 
 import java.util.Map;
 
-public class Wheel implements WheelInterface {
-    public int position;
+public abstract class Wheel {
+    public int wheelPosition;
+    public int ringPosition;
+    public int notchPosition;
     public Map<Character,Character> mapping;
-    
-    @Override
-    public String encode(String input) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 }

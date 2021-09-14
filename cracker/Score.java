@@ -1,6 +1,6 @@
 package cracker;
 
-public class Score {
+public abstract class Score {
 
     public String name;
     public Double value;
