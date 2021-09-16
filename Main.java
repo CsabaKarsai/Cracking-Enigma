@@ -9,9 +9,9 @@ public class Main{
     public static void main(String[] args) {
 
         //TODO add other rotors and debug rotorposition and ringsetting
-        Rotor rotor3 = new Rotor(4, 7, "I");
+        Rotor rotor3 = new Rotor(2, 2, "I");
         System.out.println(rotor3.getMapping());
-        int input = 3;
+        int input = 1;
         System.out.println("input letter: " + toChar(input));
         int output = rotor3.encode(input);
         System.out.println("output letter: " + toChar(output));
