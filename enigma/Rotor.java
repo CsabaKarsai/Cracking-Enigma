@@ -18,10 +18,19 @@ public class Rotor extends Wheel implements WheelInterface {
 
     @Override
     public int encode(int input) {
+        System.out.println("input: " + input);
         int shift = (this.ringSetting - this.rotorPosition) % 26;
+        if (shift < 0) shift += 26;
+        System.out.println("shift: " + shift);
         int toMap = (input - shift) % 26;
+        if (toMap < 0) toMap += 26;
+        if (toMap == 0) toMap = 26;
+        System.out.println("toMap: " + toMap);
         int mapped = this.mapping.get(toMap);
-        int output = (mapped - shift) % 26;
+        System.out.println("mapped: " + mapped);
+        int output = (mapped + shift) % 26;
+        if (output < 0) output += 26;
+        System.out.println("output: " + output);
         return output;
     }
 

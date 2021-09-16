@@ -8,13 +8,13 @@ import static java.util.Map.entry;
 public class Main{
     public static void main(String[] args) {
 
-        //TODO add other rotors and debug
-        Rotor rotor3 = new Rotor(1, 1, "I");
+        //TODO add other rotors and debug rotorposition and ringsetting
+        Rotor rotor3 = new Rotor(4, 7, "I");
         System.out.println(rotor3.getMapping());
-        int input = 1;
-        System.out.println("input: " + toChar(input));
+        int input = 3;
+        System.out.println("input letter: " + toChar(input));
         int output = rotor3.encode(input);
-        System.out.println("output: " + toChar(output));
+        System.out.println("output letter: " + toChar(output));
 
         /*
         DEBUGGING
