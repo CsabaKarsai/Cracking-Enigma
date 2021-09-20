@@ -1,17 +1,15 @@
 import java.util.HashMap;
-import java.util.Map;
 
 import enigma.Rotor;
-
-import static java.util.Map.entry;
 
 public class Main{
     public static void main(String[] args) {
 
         //TODO add other rotors
-        Rotor rotor3 = new Rotor(2, 2, "I");
+        Rotor rotor3 = new Rotor("I", 2, 2);
         System.out.println(rotor3.getMapping());
-        int input = 1;
+        char inputChar = 'A';
+        int input = toInt(inputChar);
         System.out.println("input letter: " + toChar(input));
         int output = rotor3.encode(input);
         System.out.println("output letter: " + toChar(output));
