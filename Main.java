@@ -1,18 +1,28 @@
 import java.util.HashMap;
 
+import enigma.Reflector;
 import enigma.Rotor;
 
 public class Main{
     public static void main(String[] args) {
 
-        //TODO add other rotors
-        Rotor rotor3 = new Rotor("I", 2, 2);
-        System.out.println(rotor3.getMapping());
+        Reflector reflector = new Reflector("C");
+        System.out.println("mapping: " + reflector.getMapping());
+        char inputChar = 'A';
+        int input = toInt(inputChar);
+        System.out.println("input letter: " + toChar(input));
+        int output = reflector.encode(input);
+        System.out.println("output letter: " + toChar(output));
+
+        /*
+        Rotor rotor3 = new Rotor("V", 2, 1);
+        System.out.println("mapping: " + rotor3.getMapping());
         char inputChar = 'A';
         int input = toInt(inputChar);
         System.out.println("input letter: " + toChar(input));
         int output = rotor3.encode(input);
         System.out.println("output letter: " + toChar(output));
+        */
 
         /*
         DEBUGGING

@@ -4,22 +4,29 @@ import java.util.HashMap;
 
 public class Reflector extends Wheel implements WheelInterface {
 
+    String reflectorType;
+    HashMap<Integer,Integer> mapping;
+    
+    public Reflector(String reflectorType){
+        this.reflectorType = reflectorType;
+        if (reflectorType.equals("A")) setMapping(reflectorA);
+        if (reflectorType.equals("B")) setMapping(reflectorB);
+        if (reflectorType.equals("C")) setMapping(reflectorC);
+    }
+    
     @Override
     public int encode(int input) {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.mapping.get(input);
     }
 
     @Override
     public void setMapping(HashMap<Integer, Integer> mapping) {
-        // TODO Auto-generated method stub
-        
+        this.mapping = mapping;
     }
 
     @Override
     public HashMap<Integer, Integer> getMapping() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.mapping;
     }
     
 }

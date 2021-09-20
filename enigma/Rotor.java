@@ -12,25 +12,29 @@ public class Rotor extends Wheel implements WheelInterface {
     public Rotor(String rotorType, int rotorPosition, int ringSetting){
         this.rotorType = rotorType;
         if (rotorType.equals("I")) setMapping(rotorI);
+        if (rotorType.equals("II")) setMapping(rotorII);
+        if (rotorType.equals("III")) setMapping(rotorIII);
+        if (rotorType.equals("IV")) setMapping(rotorIV);
+        if (rotorType.equals("V")) setMapping(rotorV);
         this.rotorPosition = rotorPosition;
         this.ringSetting = ringSetting;
     }
 
     @Override
     public int encode(int input) {
-        //System.out.println("input: " + input);
+        System.out.println("input: " + input);
         int shift = (this.ringSetting - this.rotorPosition) % 26;
         if (shift < 0) shift += 26;
-        //System.out.println("shift: " + shift);
+        System.out.println("shift: " + shift);
         int toMap = (input - shift) % 26;
         if (toMap < 0) toMap += 26;
         if (toMap == 0) toMap = 26;
-        //System.out.println("toMap: " + toMap);
+        System.out.println("toMap: " + toMap);
         int mapped = this.mapping.get(toMap);
-        //System.out.println("mapped: " + mapped);
+        System.out.println("mapped: " + mapped);
         int output = (mapped + shift) % 26;
         if (output < 0) output += 26;
-        //System.out.println("output: " + output);
+        System.out.println("output: " + output);
         return output;
     }
 
