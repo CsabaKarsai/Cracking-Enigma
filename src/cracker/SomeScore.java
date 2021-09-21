@@ -1,4 +1,4 @@
-package cracker;
+package src.cracker;
 
 public class SomeScore extends Score implements ScoreInterface {
 

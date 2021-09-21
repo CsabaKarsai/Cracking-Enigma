@@ -1,4 +1,4 @@
-package cracker;
+package src.cracker;
 
 public abstract class Score {
 

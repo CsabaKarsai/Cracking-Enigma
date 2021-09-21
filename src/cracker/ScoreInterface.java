@@ -1,4 +1,4 @@
-package cracker;
+package src.cracker;
 
 public interface ScoreInterface {
     public double calculate(String text);

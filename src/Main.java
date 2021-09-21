@@ -1,7 +1,9 @@
+package src;
+
 import java.util.HashMap;
 
-import enigma.Reflector;
-import enigma.Rotor;
+import src.enigma.Reflector;
+import src.enigma.Rotor;
 
 public class Main{
     public static void main(String[] args) {
