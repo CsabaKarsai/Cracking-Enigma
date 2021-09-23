@@ -11,11 +11,11 @@ public class Rotor extends Wheel implements WheelInterface {
     
     public Rotor(String rotorType, int rotorPosition, int ringSetting){
         this.rotorType = rotorType;
-        if (rotorType.equals("I")) setMapping(rotorI);
-        if (rotorType.equals("II")) setMapping(rotorII);
-        if (rotorType.equals("III")) setMapping(rotorIII);
-        if (rotorType.equals("IV")) setMapping(rotorIV);
-        if (rotorType.equals("V")) setMapping(rotorV);
+        if (rotorType.equals("I")) this.mapping = rotorI;
+        if (rotorType.equals("II")) this.mapping = rotorII;
+        if (rotorType.equals("III")) this.mapping = rotorIII;
+        if (rotorType.equals("IV")) this.mapping = rotorIV;
+        if (rotorType.equals("V")) this.mapping = rotorV;
         this.rotorPosition = rotorPosition;
         this.ringSetting = ringSetting;
     }
@@ -36,16 +36,6 @@ public class Rotor extends Wheel implements WheelInterface {
         if (output < 0) output += 26;
         System.out.println("output: " + output);
         return output;
-    }
-
-    @Override
-    public void setMapping(HashMap<Integer, Integer> mapping) {
-        this.mapping = mapping;
-    }
-
-    @Override
-    public HashMap<Integer, Integer> getMapping() {
-        return this.mapping;
     }
     
 }
