@@ -2,7 +2,11 @@ package test;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import java.util.HashMap;
+import java.util.Map;
+import static java.util.Map.entry;
 
+import src.enigma.Plugboard;
 import src.enigma.Reflector;
 import src.enigma.Rotor;
 
@@ -250,6 +254,65 @@ public class UnitTests {
         outputInt = reflectorC.encode(inputInt);
         outputChar = toChar(outputInt);
         assertEquals('U', outputChar);
+    }
+
+    @Test
+    public void testPlugboardEncode(){
+        HashMap<Integer,Integer> mapping = new HashMap<Integer,Integer>(
+            Map.ofEntries(
+                entry(1, 26),
+                entry(2, 25),
+                entry(3, 24),
+                entry(4, 23),
+                entry(5, 22),
+                entry(6, 21),
+                entry(7, 20),
+                entry(8, 19),
+                entry(9, 18),
+                entry(10, 17),
+                entry(11, 11),
+                entry(12, 12),
+                entry(13, 13),
+                entry(14, 14),
+                entry(15, 15),
+                entry(16, 16),
+                entry(17, 10),
+                entry(18, 9),
+                entry(19, 8),
+                entry(20, 7),
+                entry(21, 6),
+                entry(22, 5),
+                entry(23, 4),
+                entry(24, 3),
+                entry(25, 2),
+                entry(26, 1)
+            )
+        );
+
+        Plugboard plugboard = new Plugboard(mapping);
+        char inputChar = 'A';
+        int inputInt = toInt(inputChar);
+        int outputInt = plugboard.encode(inputInt);
+        char outputChar = toChar(outputInt);
+        assertEquals('Z', outputChar);
+
+        inputChar = 'B';
+        inputInt =toInt(inputChar);
+        outputInt = plugboard.encode(inputInt);
+        outputChar = toChar(outputInt);
+        assertEquals('Y', outputChar);
+
+        inputChar = 'M';
+        inputInt =toInt(inputChar);
+        outputInt = plugboard.encode(inputInt);
+        outputChar = toChar(outputInt);
+        assertEquals('M', outputChar);
+
+        inputChar = 'U';
+        inputInt =toInt(inputChar);
+        outputInt = plugboard.encode(inputInt);
+        outputChar = toChar(outputInt);
+        assertEquals('F', outputChar);
     }
 
     public int toInt(char letter){
