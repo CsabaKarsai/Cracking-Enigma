@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import static java.util.Map.entry;
 
+import src.UI.Validater;
 import src.enigma.Plugboard;
 import src.enigma.Reflector;
 import src.enigma.Rotor;
@@ -220,6 +221,20 @@ public class UnitTests {
 
         //input: U = 21, output: F = 6
         assertEquals(6, plugboard.encode(21));
+    }
+
+    @Test
+    public void testValidater(){
+        Validater validater = new Validater();
+        assertEquals(false, validater.validate("test"));
+        assertEquals(false, validater.validate("HC, GJ,     iv"));
+        assertEquals(false, validater.validate("ZG;gdf2%"));
+        assertEquals(false, validater.validate("AB,AB"));
+        assertEquals(false, validater.validate("AB,4U"));
+        assertEquals(false, validater.validate("AB,CD,EF,GH,IJ,KL,MN,OP,QR,ST,UV"));
+        assertEquals(true, validater.validate("AH,DJ,IT,NV"));
+        assertEquals(true, validater.validate("AB,CD,EF,GH,IJ,KL,MN,OP,QR,ST"));
+        assertEquals(true, validater.validate("ah,du,Wb,iE"));
     }
 
 }
