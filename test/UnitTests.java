@@ -9,270 +9,170 @@ import static java.util.Map.entry;
 import src.enigma.Plugboard;
 import src.enigma.Reflector;
 import src.enigma.Rotor;
-import src.UI.UI;
 
 public class UnitTests {
-
-    //TODO: remove ui and replcae with comments
     
     @Test
     public void testRotorIEncode(){
-        UI ui = new UI();
-
+        //input: A = 1, output: E = 5
         Rotor rotorI = new Rotor("I", 1, 1);
-        char inputChar = 'A';
-        int inputInt = ui.toInt(inputChar);
-        int outputInt = rotorI.encode(inputInt);
-        char outputChar = ui.toChar(outputInt);
-        assertEquals('E', outputChar);
+        assertEquals(5, rotorI.encode(1));
 
+        //input: A = 1, output: J = 10
         rotorI = new Rotor("I", 2, 1);
-        outputInt = rotorI.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('J', outputChar);
+        assertEquals(10, rotorI.encode(1));
 
+        //input: A = 1, output: K = 11
         rotorI = new Rotor("I", 1, 2);
-        outputInt = rotorI.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('K', outputChar);
+        assertEquals(11, rotorI.encode(1));
 
+        //input: A = 1, output: Q = 17
         rotorI = new Rotor("I", 17, 8);
-        outputInt = rotorI.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('Q', outputChar);
+        assertEquals(17, rotorI.encode(1));
 
+        //input: T = 20, output: C = 3
         rotorI = new Rotor("I", 9, 15);
-        inputChar = 'T';
-        inputInt = ui.toInt(inputChar);
-        outputInt = rotorI.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('C', outputChar);
+        assertEquals(3, rotorI.encode(20));
     }
 
     @Test
     public void testRotorIIEncode(){
-        UI ui = new UI();
-
+        //input: A = 1, output: A = 1
         Rotor rotorII = new Rotor("II", 1, 1);
-        char inputChar = 'A';
-        int inputInt = ui.toInt(inputChar);
-        int outputInt = rotorII.encode(inputInt);
-        char outputChar = ui.toChar(outputInt);
-        assertEquals('A', outputChar);
+        assertEquals(1, rotorII.encode(1));
 
+        //input: A = 1, output: I = 9
         rotorII = new Rotor("II", 2, 1);
-        outputInt = rotorII.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('I', outputChar);
+        assertEquals(9, rotorII.encode(1));
 
+        //input: A = 1, output: F = 6
         rotorII = new Rotor("II", 1, 2);
-        outputInt = rotorII.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('F', outputChar);
+        assertEquals(6, rotorII.encode(1));
 
+        //input: A = 1, output: J = 10
         rotorII = new Rotor("II", 13, 17);
-        outputInt = rotorII.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('J', outputChar);
+        assertEquals(10, rotorII.encode(1));
 
+        //input: J = 10, output: Q = 17
         rotorII = new Rotor("II", 9, 15);
-        inputChar = 'J';
-        inputInt = ui.toInt(inputChar);
-        outputInt = rotorII.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('Q', outputChar);
+        assertEquals(17, rotorII.encode(10));
     }
 
     @Test
     public void testRotorIIIEncode(){
-        UI ui = new UI();
-
+        //input: A = 1, output: B = 2
         Rotor rotorIII = new Rotor("III", 1, 1);
-        char inputChar = 'A';
-        int inputInt = ui.toInt(inputChar);
-        int outputInt = rotorIII.encode(inputInt);
-        char outputChar = ui.toChar(outputInt);
-        assertEquals('B', outputChar);
+        assertEquals(2, rotorIII.encode(1));
 
+        //input: A = 1, output: C = 3
         rotorIII = new Rotor("III", 2, 1);
-        outputInt = rotorIII.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('C', outputChar);
+        assertEquals(3, rotorIII.encode(1));
 
+        //input: A = 1, output: P = 16
         rotorIII = new Rotor("III", 1, 2);
-        outputInt = rotorIII.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('P', outputChar);
+        assertEquals(16, rotorIII.encode(1));
 
+        //input: A = 1, output: Q = 17
         rotorIII = new Rotor("III", 3, 9);
-        outputInt = rotorIII.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('Q', outputChar);
+        assertEquals(17, rotorIII.encode(1));
 
+        //input: U = 21, output: M = 13
         rotorIII = new Rotor("III", 10, 6);
-        inputChar = 'U';
-        inputInt = ui.toInt(inputChar);
-        outputInt = rotorIII.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('M', outputChar);
+        assertEquals(13, rotorIII.encode(21));
     }
 
     @Test
     public void testRotorIVEncode(){
-        UI ui = new UI();
-
+        //input: A = 1, output: E = 5
         Rotor rotorIV = new Rotor("IV", 1, 1);
-        char inputChar = 'A';
-        int inputInt = ui.toInt(inputChar);
-        int outputInt = rotorIV.encode(inputInt);
-        char outputChar = ui.toChar(outputInt);
-        assertEquals('E', outputChar);
+        assertEquals(5, rotorIV.encode(1));
 
+        //input: A = 1, output: R = 18
         rotorIV = new Rotor("IV", 2, 1);
-        outputInt = rotorIV.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('R', outputChar);
+        assertEquals(18, rotorIV.encode(1));
 
+        //input: A = 1, output: C = 3
         rotorIV = new Rotor("IV", 1, 2);
-        outputInt = rotorIV.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('C', outputChar);
+        assertEquals(3, rotorIV.encode(1));
 
+        //input: A = 1, output: B = 2
         rotorIV = new Rotor("IV", 23, 5);
-        outputInt = rotorIV.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('B', outputChar);
+        assertEquals(2, rotorIV.encode(1));
 
+        //input: Y = 25, output: Q = 17
         rotorIV = new Rotor("IV", 12, 7);
-        inputChar = 'Y';
-        inputInt = ui.toInt(inputChar);
-        outputInt = rotorIV.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('Q', outputChar);
+        assertEquals(17, rotorIV.encode(25));
     }
 
     @Test
     public void testRotorVEncode(){
-        UI ui = new UI();
-
+        //input: A = 1, output: V = 22
         Rotor rotorV = new Rotor("V", 1, 1);
-        char inputChar = 'A';
-        int inputInt = ui.toInt(inputChar);
-        int outputInt = rotorV.encode(inputInt);
-        char outputChar = ui.toChar(outputInt);
-        assertEquals('V', outputChar);
+        assertEquals(22, rotorV.encode(1));
 
+        //input: A = 1, output: Y = 25
         rotorV = new Rotor("V", 2, 1);
-        outputInt = rotorV.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('Y', outputChar);
+        assertEquals(25, rotorV.encode(1));
 
+        //input: A = 1, output: L = 12
         rotorV = new Rotor("V", 1, 2);
-        outputInt = rotorV.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('L', outputChar);
+        assertEquals(12, rotorV.encode(1));
 
+        //input: A = 1, output: D = 4
         rotorV = new Rotor("V", 16, 11);
-        outputInt = rotorV.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('D', outputChar);
+        assertEquals(4, rotorV.encode(1));
 
+        //input: N = 14, output: W = 23
         rotorV = new Rotor("V", 3, 20);
-        inputChar = 'N';
-        inputInt = ui.toInt(inputChar);
-        outputInt = rotorV.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('W', outputChar);
+        assertEquals(23, rotorV.encode(14));
     }
 
     @Test
     public void testReflectorAEncode(){
-        UI ui = new UI();
-
+        //input: G = 7, output: Y = 25
         Reflector reflectorA = new Reflector("A");
-        char inputChar = 'G';
-        int inputInt = ui.toInt(inputChar);
-        int outputInt = reflectorA.encode(inputInt);
-        char outputChar = ui.toChar(outputInt);
-        assertEquals('Y', outputChar);
+        assertEquals(25, reflectorA.encode(7));
 
-        inputChar = 'Y';
-        inputInt = ui.toInt(inputChar);
-        outputInt = reflectorA.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('G', outputChar);
+        //input: Y = 25, output: G = 7
+        assertEquals(7, reflectorA.encode(25));
 
-        inputChar = 'H';
-        inputInt = ui.toInt(inputChar);
-        outputInt = reflectorA.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('X', outputChar);
+        //input: H = 8, output: X = 24
+        assertEquals(24, reflectorA.encode(8));
 
-        inputChar = 'Z';
-        inputInt = ui.toInt(inputChar);
-        outputInt = reflectorA.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('D', outputChar);
+        //input: Z = 26, output: D = 4
+        assertEquals(4, reflectorA.encode(26));
     }
     
     @Test
     public void testReflectorBEncode(){
-        UI ui = new UI();
-
+        //input: C = 3, output: U = 21
         Reflector reflectorB = new Reflector("B");
-        char inputChar = 'C';
-        int inputInt = ui.toInt(inputChar);
-        int outputInt = reflectorB.encode(inputInt);
-        char outputChar = ui.toChar(outputInt);
-        assertEquals('U', outputChar);
+        assertEquals(21, reflectorB.encode(3));
 
-        inputChar = 'U';
-        inputInt = ui.toInt(inputChar);
-        outputInt = reflectorB.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('C', outputChar);
+        //input: U = 21, output: C = 3
+        assertEquals(3, reflectorB.encode(21));
 
-        inputChar = 'Q';
-        inputInt = ui.toInt(inputChar);
-        outputInt = reflectorB.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('E', outputChar);
+        //input: Q = 17, output: E = 5
+        assertEquals(5, reflectorB.encode(17));
 
-        inputChar = 'M';
-        inputInt = ui.toInt(inputChar);
-        outputInt = reflectorB.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('O', outputChar);
+        //input: M = 13, output: O = 15
+        assertEquals(15, reflectorB.encode(13));
     }
 
     @Test
     public void testReflectorCEncode(){
-        UI ui = new UI();
-
+        //input: A = 1, output: F = 6
         Reflector reflectorC = new Reflector("C");
-        char inputChar = 'A';
-        int inputInt = ui.toInt(inputChar);
-        int outputInt = reflectorC.encode(inputInt);
-        char outputChar = ui.toChar(outputInt);
-        assertEquals('F', outputChar);
+        assertEquals(6, reflectorC.encode(1));
 
-        inputChar = 'F';
-        inputInt = ui.toInt(inputChar);
-        outputInt = reflectorC.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('A', outputChar);
+        //input: F = 6, output: A = 1
+        assertEquals(1, reflectorC.encode(6));
 
-        inputChar = 'J';
-        inputInt = ui.toInt(inputChar);
-        outputInt = reflectorC.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('D', outputChar);
+        //input: J = 10, output: D = 4
+        assertEquals(4, reflectorC.encode(10));
 
-        inputChar = 'S';
-        inputInt = ui.toInt(inputChar);
-        outputInt = reflectorC.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('U', outputChar);
+        //input: S = 19, output: U = 21
+        assertEquals(21, reflectorC.encode(19));
     }
 
     @Test
@@ -308,32 +208,18 @@ public class UnitTests {
             )
         );
 
-        UI ui = new UI();
-
+        //input: A = 1, output: Z = 26
         Plugboard plugboard = new Plugboard(mapping);
-        char inputChar = 'A';
-        int inputInt = ui.toInt(inputChar);
-        int outputInt = plugboard.encode(inputInt);
-        char outputChar = ui.toChar(outputInt);
-        assertEquals('Z', outputChar);
+        assertEquals(26, plugboard.encode(1));
 
-        inputChar = 'B';
-        inputInt = ui.toInt(inputChar);
-        outputInt = plugboard.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('Y', outputChar);
+        //input: B = 2, output: Y = 25
+        assertEquals(25, plugboard.encode(2));
 
-        inputChar = 'M';
-        inputInt = ui.toInt(inputChar);
-        outputInt = plugboard.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('M', outputChar);
+        //input: M = 13, output: M = 13
+        assertEquals(13, plugboard.encode(13));
 
-        inputChar = 'U';
-        inputInt = ui.toInt(inputChar);
-        outputInt = plugboard.encode(inputInt);
-        outputChar = ui.toChar(outputInt);
-        assertEquals('F', outputChar);
+        //input: U = 21, output: F = 6
+        assertEquals(6, plugboard.encode(21));
     }
 
 }
