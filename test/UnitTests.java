@@ -2,10 +2,13 @@ package test;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
+
 import java.util.HashMap;
 import java.util.Map;
 import static java.util.Map.entry;
 
+import src.UI.UI;
 import src.UI.Validater;
 import src.enigma.Plugboard;
 import src.enigma.Reflector;
@@ -235,6 +238,23 @@ public class UnitTests {
         assertEquals(true, validater.validate("AH,DJ,IT,NV"));
         assertEquals(true, validater.validate("AB,CD,EF,GH,IJ,KL,MN,OP,QR,ST"));
         assertEquals(true, validater.validate("ah,du,Wb,iE"));
+    }
+
+    @Test
+    public void testUI(){
+        UI ui = new UI();
+        assertEquals(21, ui.toInt('U'));
+        assertEquals(1, ui.toInt('A'));
+        assertEquals(10, ui.toInt('J'));
+        assertEquals('U', ui.toChar(21));
+        assertEquals('A', ui.toChar(1));
+        assertEquals('J', ui.toChar(10));
+        assertEquals("AB", ui.getIthEntry("AB,HD,KJ", 1));
+        assertEquals("HD", ui.getIthEntry("AB,HD,KJ", 2));
+        assertEquals("KJ", ui.getIthEntry("AB,HD,KJ", 3));
+        assertThrows(IndexOutOfBoundsException.class, () -> ui.getIthEntry("AB,HD,KJ", 4));
+        assertThrows(IndexOutOfBoundsException.class, () -> ui.getIthEntry("AB,HD,KJ", 0));
+        assertThrows(IndexOutOfBoundsException.class, () -> ui.getIthEntry("AB,HD,KJ", -1));
     }
 
 }
