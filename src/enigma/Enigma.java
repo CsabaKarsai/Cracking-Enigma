@@ -12,22 +12,15 @@ public class Enigma {
     Rotor leftRotor;
     Reflector reflector;
 
-    public Enigma(
-        HashMap<Integer,Integer> plugboardMapping,
-        String rightRotorType, int rightRotorPosition, int rightRotorRingSetting,
-        String middleRotorType, int middleRotorPosition, int middleRotorRingSetting,
-        String leftRotorType, int leftRotorPosition, int leftRotorRingSetting,
-        String reflectorType
-    ){
-        this.plugboard = new Plugboard(plugboardMapping);
-        this.rightRotor = new Rotor(rightRotorType, rightRotorPosition, rightRotorRingSetting);
-        this.middleRotor = new Rotor(middleRotorType, middleRotorPosition, middleRotorRingSetting);
-        this.leftRotor = new Rotor(leftRotorType, leftRotorPosition, leftRotorRingSetting);
-        this.reflector = new Reflector(reflectorType);
-    }
-
     //encode a single char
-    public char encode(char inputChar){
+    public char encode(char inputChar) throws NullPointerException{
+        if (this.plugboard == null
+            || this.rightRotor == null
+            || this.middleRotor == null
+            || this.leftRotor == null
+            || this.reflector == null){
+                throw new NullPointerException();
+        }
         int inputInt = toInt(inputChar);
         int plugboardOutput = plugboard.encode(inputInt);
         int rightRotorOutput = rightRotor.encode(plugboardOutput);
@@ -42,6 +35,26 @@ public class Enigma {
         return outputChar;
     }
 
+    public void setPlugboard(HashMap<Integer,Integer> mapping){
+        this.plugboard = new Plugboard(mapping);
+    }
+    
+    public void setRightRotor(String rotorType, int rotorPosition, int ringSetting){
+        this.rightRotor = new Rotor(rotorType, rotorPosition, ringSetting);
+    }
+
+    public void setMiddleRotor(String rotorType, int rotorPosition, int ringSetting){
+        this.middleRotor = new Rotor(rotorType, rotorPosition, ringSetting);
+    }
+
+    public void setLeftRotor(String rotorType, int rotorPosition, int ringSetting){
+        this.leftRotor = new Rotor(rotorType, rotorPosition, ringSetting);
+    }
+
+    public void setReflector(String rotorType, int rotorPosition, int ringSetting){
+        this.rightRotor = new Rotor(rotorType, rotorPosition, ringSetting);
+    }
+
     //change a char to an int (A = 1, B = 2, ..., Z = 26)
     public int toInt(char letter){
         return Character.getNumericValue(letter) - 9;
@@ -50,10 +63,6 @@ public class Enigma {
     //change an int to a char (A = 1, B = 2, ..., Z = 26)
     public char toChar(int number){
         return (char) (number + 64);
-    }
-
-    public void printReflectorMapping(){
-        System.out.println(this.reflector.mapping);
     }
     
 }

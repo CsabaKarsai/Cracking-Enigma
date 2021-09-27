@@ -52,16 +52,7 @@ public class IntegrationTests {
             )
         );
 
-        Enigma enigma = new Enigma(plugboardMapping, "III", 1, 1, "II", 1, 1, "I", 1, 1, "B");
-        
-        /*
-        Rotor rotorTest = new Rotor("I", 2, 1);
-        int test = rotorTest.encode(20);
-        System.out.println("test:" + test);
-
-        int test2 = rotorTest.encode(26);
-        System.out.println("test2: " + test2);
-        */
+        //Enigma enigma = new Enigma(plugboardMapping, "III", 1, 1, "II", 1, 1, "I", 1, 1, "B");
         //assertEquals('U', enigma.encode('A'));
         
     }
