@@ -22,15 +22,15 @@ public class Enigma {
                 throw new NullPointerException();
         }
         int inputInt = toInt(inputChar);
-        int plugboardOutput = plugboard.encode(inputInt);
-        int rightRotorOutput = rightRotor.encode(plugboardOutput);
-        int middleRotorOutput = middleRotor.encode(rightRotorOutput);
-        int leftRotorOutput = leftRotor.encode(middleRotorOutput);
-        int reflectorOutput = reflector.encode(leftRotorOutput);
-        leftRotorOutput = leftRotor.encode(reflectorOutput);
-        middleRotorOutput = middleRotor.encode(leftRotorOutput);
-        rightRotorOutput = rightRotor.encode(middleRotorOutput);
-        plugboardOutput = plugboard.encode(rightRotorOutput);
+        int plugboardOutput = plugboard.encodeForward(inputInt);
+        int rightRotorOutput = rightRotor.encodeForward(plugboardOutput);
+        int middleRotorOutput = middleRotor.encodeForward(rightRotorOutput);
+        int leftRotorOutput = leftRotor.encodeForward(middleRotorOutput);
+        int reflectorOutput = reflector.encodeForward(leftRotorOutput);
+        leftRotorOutput = leftRotor.encodeBackward(reflectorOutput);
+        middleRotorOutput = middleRotor.encodeBackward(leftRotorOutput);
+        rightRotorOutput = rightRotor.encodeBackward(middleRotorOutput);
+        plugboardOutput = plugboard.encodeBackward(rightRotorOutput);
         char outputChar = toChar(plugboardOutput);
         return outputChar;
     }
@@ -51,8 +51,8 @@ public class Enigma {
         this.leftRotor = new Rotor(rotorType, rotorPosition, ringSetting);
     }
 
-    public void setReflector(String rotorType, int rotorPosition, int ringSetting){
-        this.rightRotor = new Rotor(rotorType, rotorPosition, ringSetting);
+    public void setReflector(String reflectorType){
+        this.reflector = new Reflector(reflectorType);
     }
 
     //change a char to an int (A = 1, B = 2, ..., Z = 26)

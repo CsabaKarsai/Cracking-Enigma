@@ -11,8 +11,13 @@ public class Plugboard extends Wheel implements WheelInterface {
     }
     
     @Override
-    public int encode(int input) {
+    public int encodeForward(int input) {
         return this.mapping.get(input);
+    }
+
+    @Override
+    public int encodeBackward(int input) {
+        return encodeForward(input);
     }
 
 }

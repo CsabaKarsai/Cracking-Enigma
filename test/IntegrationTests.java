@@ -2,26 +2,16 @@ package test;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 
 import java.util.HashMap;
 import java.util.Map;
 import static java.util.Map.entry;
-
-import src.UI.UI;
-import src.UI.Validater;
 import src.enigma.Enigma;
-import src.enigma.Plugboard;
-import src.enigma.Reflector;
-import src.enigma.Rotor;
-
 public class IntegrationTests {
-
-    //TODO: swap key values for each rotor on backwards path
 
     @Test
     public void testEnigmaEncodeSingleLetter(){
-        HashMap<Integer,Integer> plugboardMapping = new HashMap<Integer,Integer>(
+        HashMap<Integer,Integer> plugboardDefault = new HashMap<Integer,Integer>(
             Map.ofEntries(
                 entry(1, 1),
                 entry(2, 2),
@@ -52,8 +42,13 @@ public class IntegrationTests {
             )
         );
 
-        //Enigma enigma = new Enigma(plugboardMapping, "III", 1, 1, "II", 1, 1, "I", 1, 1, "B");
-        //assertEquals('U', enigma.encode('A'));
+        Enigma enigma = new Enigma();
+        enigma.setPlugboard(plugboardDefault);
+        enigma.setRightRotor("III", 1, 1);
+        enigma.setMiddleRotor("II", 1, 1);
+        enigma.setLeftRotor("I", 1, 1);
+        enigma.setReflector("B");
+        assertEquals('U', enigma.encode('A'));
         
     }
 
