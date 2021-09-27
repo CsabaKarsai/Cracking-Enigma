@@ -243,12 +243,6 @@ public class UnitTests {
     @Test
     public void testUI(){
         UI ui = new UI();
-        assertEquals(21, ui.toInt('U'));
-        assertEquals(1, ui.toInt('A'));
-        assertEquals(10, ui.toInt('J'));
-        assertEquals('U', ui.toChar(21));
-        assertEquals('A', ui.toChar(1));
-        assertEquals('J', ui.toChar(10));
         assertEquals("AB", ui.getIthEntry("AB,HD,KJ", 1));
         assertEquals("HD", ui.getIthEntry("AB,HD,KJ", 2));
         assertEquals("KJ", ui.getIthEntry("AB,HD,KJ", 3));
