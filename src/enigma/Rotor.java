@@ -1,6 +1,7 @@
 package src.enigma;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Rotor extends Wheel implements WheelInterface {
 
@@ -36,6 +37,14 @@ public class Rotor extends Wheel implements WheelInterface {
         if (output <= 0) output += 26;
         System.out.println("output: " + output);
         return output;
+    }
+
+    public HashMap<Integer,Integer> swapKeysValues(){
+        HashMap<Integer, Integer> swappedHashMap = new HashMap<Integer, Integer>();
+        for(Map.Entry<Integer, Integer> entry: this.mapping.entrySet()){
+            swappedHashMap.put(entry.getValue(), entry.getKey());
+        }
+        return swappedHashMap;
     }
     
 }

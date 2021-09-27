@@ -15,6 +15,42 @@ import src.enigma.Reflector;
 import src.enigma.Rotor;
 
 public class UnitTests {
+
+    @Test
+    public void testRotorSwapKeysValues(){
+        Rotor rotorI = new Rotor("I", 1, 1);
+        HashMap<Integer,Integer> correctlySwappedMap = new HashMap<Integer,Integer>(
+            Map.ofEntries(
+                entry(5, 1),
+                entry(11, 2),
+                entry(13, 3),
+                entry(6, 4),
+                entry(12, 5),
+                entry(7, 6),
+                entry(4, 7),
+                entry(17, 8),
+                entry(22, 9),
+                entry(26, 10),
+                entry(14, 11),
+                entry(20, 12),
+                entry(15, 13),
+                entry(23, 14),
+                entry(25, 15),
+                entry(8, 16),
+                entry(24, 17),
+                entry(21, 18),
+                entry(19, 19),
+                entry(16, 20),
+                entry(1, 21),
+                entry(9, 22),
+                entry(2, 23),
+                entry(18, 24),
+                entry(3, 25),
+                entry(10, 26)
+            )
+        );
+        assertEquals(correctlySwappedMap, rotorI.swapKeysValues());
+    }
     
     @Test
     public void testRotorIEncode(){
