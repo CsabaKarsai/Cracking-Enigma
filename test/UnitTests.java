@@ -17,6 +17,20 @@ import src.enigma.Rotor;
 public class UnitTests {
 
     @Test
+    public void testRotorTurn(){
+        Rotor rotor = new Rotor("I", 1, 1);
+        rotor.turn();
+        assertEquals(2, rotor.getRotorPosition());
+
+        rotor = new Rotor("I", 25, 1);
+        rotor.turn();
+        assertEquals(26, rotor.getRotorPosition());
+
+        rotor.turn();
+        assertEquals(1, rotor.getRotorPosition());
+    }
+    
+    @Test
     public void testRotorSwapKeysValues(){
         Rotor rotorI = new Rotor("I", 1, 1);
         HashMap<Integer,Integer> correctlySwappedMap = new HashMap<Integer,Integer>(

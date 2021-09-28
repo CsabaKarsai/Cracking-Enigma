@@ -66,5 +66,22 @@ public class Rotor extends Wheel implements WheelInterface {
         }
         return swappedHashMap;
     }
+
+    public void setRotorPosition(int position){
+        this.rotorPosition = position;
+    }
+
+    public int getRotorPosition(){
+        return this.rotorPosition;
+    }
+
+    public void turn(){
+        int positionBeforeTurn = getRotorPosition();
+        int positionAfterTurn = (positionBeforeTurn + 1) % 26;
+        if (positionAfterTurn == 0){
+            positionAfterTurn += 26;
+        }
+        setRotorPosition(positionAfterTurn);
+    }
     
 }
