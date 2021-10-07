@@ -13,6 +13,7 @@ import src.UI.Validater;
 import src.enigma.Plugboard;
 import src.enigma.Reflector;
 import src.enigma.Rotor;
+import src.enigma.Enigma;
 
 public class UnitTests {
 
@@ -274,6 +275,89 @@ public class UnitTests {
 
         //input: U = 21, output: F = 6
         assertEquals(6, plugboard.encodeForward(21));
+    }
+
+    @Test
+    public void testEnigmaTurnRotorNormal(){
+        Enigma enigma = new Enigma();
+        enigma.setRightRotor("I", 1, 1);
+        enigma.setMiddleRotor("II", 1, 1);
+        enigma.setLeftRotor("III", 1, 1);
+
+        enigma.turn();
+        assertEquals(2, enigma.getRightRotor().getRotorPosition());
+        enigma.turn();
+        assertEquals(3, enigma.getRightRotor().getRotorPosition());
+    }
+
+    @Test
+    public void testEnigmaTurnRightRotorTurnover(){
+        Enigma enigma = new Enigma();
+        enigma.setRightRotor("I", 17, 1);
+        enigma.setMiddleRotor("II", 1, 1);
+        enigma.setLeftRotor("III", 1, 1);
+
+        enigma.turn();
+        assertEquals(18, enigma.getRightRotor().getRotorPosition());
+        assertEquals(2, enigma.getMiddleRotor().getRotorPosition());
+    }
+
+    @Test
+    public void testEnigmaTurnMiddleRotorTurnover(){
+        Enigma enigma = new Enigma();
+        enigma.setRightRotor("I", 17, 1);
+        enigma.setMiddleRotor("II", 5, 1);
+        enigma.setLeftRotor("III", 1, 1);
+
+        enigma.turn();
+        assertEquals(18, enigma.getRightRotor().getRotorPosition());
+        assertEquals(6, enigma.getMiddleRotor().getRotorPosition());
+        assertEquals(2, enigma.getLeftRotor().getRotorPosition());
+    }
+
+    //TODO test turnover anomaly
+    @Test
+    public void testTurnOverAnomaly(){
+        //KER -> LFS
+        Enigma enigma = new Enigma();
+        enigma.setRightRotor("I", 18, 1);
+        enigma.setMiddleRotor("II", 5, 1);
+        enigma.setLeftRotor("III", 11, 1);
+
+        enigma.turn();
+        assertEquals(19, enigma.getRightRotor().getRotorPosition());
+        assertEquals(6, enigma.getMiddleRotor().getRotorPosition());
+        assertEquals(12, enigma.getLeftRotor().getRotorPosition());
+
+        //AEW -> BFX
+        enigma.setRightRotor("III", 23, 1);
+        enigma.setMiddleRotor("II", 5, 1);
+        enigma.setLeftRotor("I", 1, 1);
+
+        enigma.turn();
+        assertEquals(24, enigma.getRightRotor().getRotorPosition());
+        assertEquals(6, enigma.getMiddleRotor().getRotorPosition());
+        assertEquals(2, enigma.getLeftRotor().getRotorPosition());
+
+        //AEA -> BFB
+        enigma.setRightRotor("III", 1, 1);
+        enigma.setMiddleRotor("II", 5, 1);
+        enigma.setLeftRotor("I", 1, 1);
+
+        enigma.turn();
+        assertEquals(2, enigma.getRightRotor().getRotorPosition());
+        assertEquals(6, enigma.getMiddleRotor().getRotorPosition());
+        assertEquals(2, enigma.getLeftRotor().getRotorPosition());
+
+        //AZF -> BAG
+        enigma.setRightRotor("II", 6, 1);
+        enigma.setMiddleRotor("V", 26, 1);
+        enigma.setLeftRotor("III", 1, 1);
+
+        enigma.turn();
+        assertEquals(7, enigma.getRightRotor().getRotorPosition());
+        assertEquals(1, enigma.getMiddleRotor().getRotorPosition());
+        assertEquals(2, enigma.getLeftRotor().getRotorPosition());
     }
 
     @Test

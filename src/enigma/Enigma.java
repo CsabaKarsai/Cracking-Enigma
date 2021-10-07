@@ -3,7 +3,7 @@ package src.enigma;
 import java.util.HashMap;
 public class Enigma {
 
-    //TODO: turn, generate plugboard mapping out of string input method,
+    //TODO: generate plugboard mapping out of string input method,
     //method to iterate over characters in string and encode
     
     Plugboard plugboard;
@@ -18,7 +18,7 @@ public class Enigma {
             || this.rightRotor == null
             || this.middleRotor == null
             || this.leftRotor == null
-            || this.reflector == null){
+            || this.reflector == null) {
                 throw new NullPointerException();
         }
         int inputInt = toInt(inputChar);
@@ -43,12 +43,24 @@ public class Enigma {
         this.rightRotor = new Rotor(rotorType, rotorPosition, ringSetting);
     }
 
+    public Rotor getRightRotor(){
+        return this.rightRotor;
+    }
+
     public void setMiddleRotor(String rotorType, int rotorPosition, int ringSetting){
         this.middleRotor = new Rotor(rotorType, rotorPosition, ringSetting);
     }
 
+    public Rotor getMiddleRotor(){
+        return this.middleRotor;
+    }
+
     public void setLeftRotor(String rotorType, int rotorPosition, int ringSetting){
         this.leftRotor = new Rotor(rotorType, rotorPosition, ringSetting);
+    }
+
+    public Rotor getLeftRotor(){
+        return this.leftRotor;
     }
 
     public void setReflector(String reflectorType){
@@ -63,6 +75,30 @@ public class Enigma {
     //change an int to a char (A = 1, B = 2, ..., Z = 26)
     public char toChar(int number){
         return (char) (number + 64);
+    }
+
+    public void turn(){
+        rightRotor.turn();
+        //turnover anomaly of middle rotor
+        int middleRotorBeforeTurnover = middleRotor.getTurnover() - 1;
+        if (middleRotorBeforeTurnover == 0){
+            middleRotorBeforeTurnover = 26;
+        }
+        if (middleRotor.getRotorPosition() == middleRotorBeforeTurnover){
+            System.out.println("Entered anomaly case!");
+            middleRotor.turn();
+            if (middleRotor.getRotorPosition() == middleRotor.getTurnover()){
+                leftRotor.turn();
+            }
+        //normal case
+        } else {
+            if (rightRotor.getRotorPosition() == rightRotor.getTurnover()){
+                middleRotor.turn();
+                if (middleRotor.getRotorPosition() == middleRotor.getTurnover()) {
+                    leftRotor.turn();
+                }
+            }
+        }
     }
     
 }

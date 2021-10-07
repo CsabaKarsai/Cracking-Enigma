@@ -8,6 +8,7 @@ public class Rotor extends Wheel implements WheelInterface {
     String rotorType;
     int rotorPosition;
     int ringSetting;
+    int turnover;
     HashMap<Integer,Integer> mappingForward;
     HashMap<Integer,Integer> mappingBackward;
     
@@ -15,16 +16,31 @@ public class Rotor extends Wheel implements WheelInterface {
         this.rotorType = rotorType;
         this.rotorPosition = rotorPosition;
         this.ringSetting = ringSetting;
-        if (rotorType.equals("I")) this.mappingForward = rotorI;
-        if (rotorType.equals("II")) this.mappingForward = rotorII;
-        if (rotorType.equals("III")) this.mappingForward = rotorIII;
-        if (rotorType.equals("IV")) this.mappingForward = rotorIV;
-        if (rotorType.equals("V")) this.mappingForward = rotorV;
+        if (rotorType.equals("I")){
+            this.mappingForward = rotorI;
+            this.turnover = 18;
+        }
+        if (rotorType.equals("II")){
+            this.mappingForward = rotorII;
+            this.turnover = 6;
+        }
+        if (rotorType.equals("III")){
+            this.mappingForward = rotorIII;
+            this.turnover = 23;
+        }
+        if (rotorType.equals("IV")){
+            this.mappingForward = rotorIV;
+            this.turnover = 11;
+        }
+        if (rotorType.equals("V")){
+            this.mappingForward = rotorV;
+            this.turnover = 1;
+        }
         this.mappingBackward = swapKeysValues();
     }
 
     @Override
-    public int encodeForward(int input) {
+    public int encodeForward(int input){
         System.out.println(this.rotorType);
         System.out.println("input: " + input);
         int shift = (this.ringSetting - this.rotorPosition) % 26;
@@ -42,7 +58,7 @@ public class Rotor extends Wheel implements WheelInterface {
     }
 
     @Override
-    public int encodeBackward(int input) {
+    public int encodeBackward(int input){
         System.out.println(this.rotorType);
         System.out.println("input: " + input);
         int shift = (this.ringSetting - this.rotorPosition) % 26;
@@ -75,10 +91,14 @@ public class Rotor extends Wheel implements WheelInterface {
         return this.rotorPosition;
     }
 
+    public int getTurnover(){
+        return this.turnover;
+    }
+
     public void turn(){
         int positionBeforeTurn = getRotorPosition();
         int positionAfterTurn = (positionBeforeTurn + 1) % 26;
-        if (positionAfterTurn == 0){
+        if (positionAfterTurn == 0) {
             positionAfterTurn += 26;
         }
         setRotorPosition(positionAfterTurn);

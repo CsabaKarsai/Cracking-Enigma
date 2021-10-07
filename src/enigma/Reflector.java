@@ -15,7 +15,7 @@ public class Reflector extends Wheel implements WheelInterface {
     }
     
     @Override
-    public int encodeForward(int input) {
+    public int encodeForward(int input){
         System.out.println(this.reflectorType);
         System.out.println("input: " + input);
         int output = this.mapping.get(input);
@@ -24,7 +24,7 @@ public class Reflector extends Wheel implements WheelInterface {
     }
 
     @Override
-    public int encodeBackward(int input) {
+    public int encodeBackward(int input){
         return encodeForward(input);
     }
     
