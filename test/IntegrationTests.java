@@ -4,8 +4,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
-import java.util.Map;
-import static java.util.Map.entry;
 import src.enigma.Enigma;
 public class IntegrationTests {
 
@@ -46,6 +44,14 @@ public class IntegrationTests {
         enigma.setLeftRotor("I", 9, 14);
         enigma.setReflector("B");
         assertEquals("SVXOU", enigma.encodeString("AHFXH"));
+
+        plugboard = enigma.generatePlugboard("BG,UI,TL,AF,CN");
+        enigma.setPlugboard(plugboard);
+        enigma.setRightRotor("V", 17, 11);
+        enigma.setMiddleRotor("II", 4, 20);
+        enigma.setLeftRotor("I", 9, 14);
+        enigma.setReflector("B");
+        assertEquals("DJUTG", enigma.encodeString("SHFUY"));
     }
 
 }
