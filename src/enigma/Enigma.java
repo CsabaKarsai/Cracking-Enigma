@@ -3,8 +3,7 @@ package src.enigma;
 import java.util.HashMap;
 public class Enigma {
 
-    //TODO: generate plugboard mapping out of string input method,
-    //method to iterate over characters in string and encode
+    //TODO: generate plugboard mapping out of string input method
     
     Plugboard plugboard;
     Rotor rightRotor;
@@ -13,7 +12,7 @@ public class Enigma {
     Reflector reflector;
 
     //encode a single char
-    public char encode(char inputChar) throws NullPointerException{
+    public char encodeChar(char inputChar) throws NullPointerException{
         if (this.plugboard == null
             || this.rightRotor == null
             || this.middleRotor == null
@@ -98,6 +97,20 @@ public class Enigma {
                 }
             }   
         }
+    }
+
+    public String encodeString(String input){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < input.length(); i++){
+            char charToEncode = input.charAt(i);
+            if (charToEncode == ' '){
+                sb.append(charToEncode);
+            } else {
+                turn();
+                sb.append(encodeChar(charToEncode));
+            }
+        }
+        return sb.toString();
     }
     
 }
