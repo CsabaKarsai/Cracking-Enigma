@@ -111,10 +111,24 @@ public class Enigma {
         return sb.toString();
     }
 
-    //get i-th entry validated user input for plugboard
-    public String getIthEntry(String input, int i) throws IndexOutOfBoundsException{
+    //Generate plugboard mapping out of validated String input
+    public HashMap<Integer,Integer> generatePlugboard(String input){
         String[] splitted = input.split(",");
-        return splitted[i - 1];
+        HashMap<Integer,Integer> plugboard = new HashMap<>();
+        for (String plugboardConnection : splitted){
+            char firstPlug = plugboardConnection.charAt(0);
+            int firstPlugInt = toInt(firstPlug);
+            char secondPlug = plugboardConnection.charAt(1);
+            int secondPlugInt = toInt(secondPlug);
+            plugboard.put(firstPlugInt, secondPlugInt);
+            plugboard.put(secondPlugInt, firstPlugInt);
+        }
+        for (int i = 1; i < 27; i++){
+            if (!plugboard.containsKey(i)){
+                plugboard.put(i, i);
+            }
+        }
+        return plugboard;
     }
     
 }
