@@ -79,25 +79,24 @@ public class Enigma {
 
     public void turn(){
         rightRotor.turn();
-        //turnover anomaly of middle rotor
-        int middleRotorBeforeTurnover = middleRotor.getTurnover() - 1;
-        if (middleRotorBeforeTurnover == 0){
-            middleRotorBeforeTurnover = 26;
-        }
-        if (middleRotor.getRotorPosition() == middleRotorBeforeTurnover){
-            System.out.println("Entered anomaly case!");
+        //normal case
+        if (rightRotor.getRotorPosition() == rightRotor.getTurnover()){
             middleRotor.turn();
-            if (middleRotor.getRotorPosition() == middleRotor.getTurnover()){
+            if (middleRotor.getRotorPosition() == middleRotor.getTurnover()) {
                 leftRotor.turn();
             }
-        //normal case
         } else {
-            if (rightRotor.getRotorPosition() == rightRotor.getTurnover()){
+            //turnover anomaly of middle rotor
+            int middleRotorBeforeTurnover = middleRotor.getTurnover() - 1;
+            if (middleRotorBeforeTurnover == 0){
+                middleRotorBeforeTurnover = 26;
+            }
+            if (middleRotor.getRotorPosition() == middleRotorBeforeTurnover){
                 middleRotor.turn();
-                if (middleRotor.getRotorPosition() == middleRotor.getTurnover()) {
+                if (middleRotor.getRotorPosition() == middleRotor.getTurnover()){
                     leftRotor.turn();
                 }
-            }
+            }   
         }
     }
     
