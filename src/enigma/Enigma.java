@@ -2,8 +2,6 @@ package src.enigma;
 
 import java.util.HashMap;
 public class Enigma {
-
-    //TODO: generate plugboard mapping out of string input method
     
     Plugboard plugboard;
     Rotor rightRotor;
@@ -111,6 +109,12 @@ public class Enigma {
             }
         }
         return sb.toString();
+    }
+
+    //get i-th entry validated user input for plugboard
+    public String getIthEntry(String input, int i) throws IndexOutOfBoundsException{
+        String[] splitted = input.split(",");
+        return splitted[i - 1];
     }
     
 }

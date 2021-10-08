@@ -32,7 +32,7 @@ public class Validater {
     }
 
     //validate user input for plugboard, should be a comma seperated String of 2 english letters
-    public Boolean validate(String input){
+    public Boolean validatePlugboard(String input){
         if (input.isEmpty() || (inputMatchesRegex(input) && getLength(input) <= 10 && !hasDuplicates(input))){
             return true;
         } else {

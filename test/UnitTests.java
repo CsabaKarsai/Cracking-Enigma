@@ -363,26 +363,26 @@ public class UnitTests {
     @Test
     public void testValidater(){
         Validater validater = new Validater();
-        assertEquals(false, validater.validate("test"));
-        assertEquals(false, validater.validate("HC, GJ,     iv"));
-        assertEquals(false, validater.validate("ZG;gdf2%"));
-        assertEquals(false, validater.validate("AB,AB"));
-        assertEquals(false, validater.validate("AB,4U"));
-        assertEquals(false, validater.validate("AB,CD,EF,GH,IJ,KL,MN,OP,QR,ST,UV"));
-        assertEquals(true, validater.validate("AH,DJ,IT,NV"));
-        assertEquals(true, validater.validate("AB,CD,EF,GH,IJ,KL,MN,OP,QR,ST"));
-        assertEquals(true, validater.validate("ah,du,Wb,iE"));
+        assertEquals(false, validater.validatePlugboard("test"));
+        assertEquals(false, validater.validatePlugboard("HC, GJ,     iv"));
+        assertEquals(false, validater.validatePlugboard("ZG;gdf2%"));
+        assertEquals(false, validater.validatePlugboard("AB,AB"));
+        assertEquals(false, validater.validatePlugboard("AB,4U"));
+        assertEquals(false, validater.validatePlugboard("AB,CD,EF,GH,IJ,KL,MN,OP,QR,ST,UV"));
+        assertEquals(true, validater.validatePlugboard("AH,DJ,IT,NV"));
+        assertEquals(true, validater.validatePlugboard("AB,CD,EF,GH,IJ,KL,MN,OP,QR,ST"));
+        assertEquals(true, validater.validatePlugboard("ah,du,Wb,iE"));
     }
 
     @Test
-    public void testUI(){
-        UI ui = new UI();
-        assertEquals("AB", ui.getIthEntry("AB,HD,KJ", 1));
-        assertEquals("HD", ui.getIthEntry("AB,HD,KJ", 2));
-        assertEquals("KJ", ui.getIthEntry("AB,HD,KJ", 3));
-        assertThrows(IndexOutOfBoundsException.class, () -> ui.getIthEntry("AB,HD,KJ", 4));
-        assertThrows(IndexOutOfBoundsException.class, () -> ui.getIthEntry("AB,HD,KJ", 0));
-        assertThrows(IndexOutOfBoundsException.class, () -> ui.getIthEntry("AB,HD,KJ", -1));
+    public void testGetIthEntry(){
+        Enigma enigma = new Enigma();
+        assertEquals("AB", enigma.getIthEntry("AB,HD,KJ", 1));
+        assertEquals("HD", enigma.getIthEntry("AB,HD,KJ", 2));
+        assertEquals("KJ", enigma.getIthEntry("AB,HD,KJ", 3));
+        assertThrows(IndexOutOfBoundsException.class, () -> enigma.getIthEntry("AB,HD,KJ", 4));
+        assertThrows(IndexOutOfBoundsException.class, () -> enigma.getIthEntry("AB,HD,KJ", 0));
+        assertThrows(IndexOutOfBoundsException.class, () -> enigma.getIthEntry("AB,HD,KJ", -1));
     }
 
 }
