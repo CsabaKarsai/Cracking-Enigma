@@ -4,14 +4,6 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "mainClass": "src.Main",
-            "projectName": "Cracking-Enigma_5fdd9e5"
-        },
         {
             "type": "java",
             "name": "Launch Main",
