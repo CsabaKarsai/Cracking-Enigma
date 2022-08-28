@@ -9,20 +9,7 @@
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "src.Main",
-            "projectName": "Cracking-Enigma_862fb159"
-        },
-        {
-            "type": "java",
-            "name": "Launch Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "mainClass": "Main",
-            "projectName": "Cracking-Enigma_862fb159"
+            "projectName": "Cracking-Enigma_5fdd9e5"
         }
     ]
 }
