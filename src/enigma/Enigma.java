@@ -76,14 +76,14 @@ public class Enigma {
 
     public void turn(){
         rightRotor.turn();
-        //normal case
+        //normal case, like a kilometer counter in a car
         if (rightRotor.getRotorPosition() == rightRotor.getTurnover()){
             middleRotor.turn();
             if (middleRotor.getRotorPosition() == middleRotor.getTurnover()) {
                 leftRotor.turn();
             }
         } else {
-            //turnover anomaly of middle rotor
+            //turnover anomaly of middle rotor: turn also if middle rotor is one position before turnover
             int middleRotorBeforeTurnover = middleRotor.getTurnover() - 1;
             if (middleRotorBeforeTurnover == 0){
                 middleRotorBeforeTurnover = 26;

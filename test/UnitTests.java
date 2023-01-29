@@ -141,6 +141,10 @@ public class UnitTests {
         Rotor rotorIV = new Rotor("IV", 1, 1);
         assertEquals(5, rotorIV.encodeForward(1));
 
+        //input: A = 1, output: E = 5, shows 
+        rotorIV = new Rotor("IV", 2, 2);
+        assertEquals(5, rotorIV.encodeForward(1));
+
         //input: A = 1, output: R = 18
         rotorIV = new Rotor("IV", 2, 1);
         assertEquals(18, rotorIV.encodeForward(1));
@@ -151,6 +155,10 @@ public class UnitTests {
 
         //input: A = 1, output: B = 2
         rotorIV = new Rotor("IV", 23, 5);
+        assertEquals(2, rotorIV.encodeForward(1));
+
+        //input: A = 1, output: B = 2
+        rotorIV = new Rotor("IV", 20, 2);
         assertEquals(2, rotorIV.encodeForward(1));
 
         //input: Y = 25, output: Q = 17
