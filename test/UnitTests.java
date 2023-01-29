@@ -417,4 +417,10 @@ public class UnitTests {
         assertEquals(ioc_ente.isBetterThan(ioc_keine_ente), true);
     }
 
+    @Test
+    public void testIndexOfCoincidenceCalculation(){
+        IndexOfCoincidence ioc_ente = new IndexOfCoincidence("Tobias ist eine Ente", "german");
+        assertEquals(ioc_ente.getValue(), 0.003959276018099547, 0.00001);
+    }
+
 }
