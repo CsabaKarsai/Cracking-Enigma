@@ -12,6 +12,7 @@ import src.enigma.Plugboard;
 import src.enigma.Reflector;
 import src.enigma.Rotor;
 import src.enigma.Enigma;
+import src.cracker.IndexOfCoincidence;
 
 public class UnitTests {
 
@@ -407,6 +408,13 @@ public class UnitTests {
         String validatedUserInputPlugboard = "AD,CN,ET,FL,GI,JV,KZ,PU,QY,WX";
         Enigma enigma = new Enigma();
         assertEquals(expectedPlugboard, enigma.generatePlugboard(validatedUserInputPlugboard));
+    }
+
+    @Test
+    public void testIndexOfCoincidenceIsBetterThan(){
+        IndexOfCoincidence ioc_ente = new IndexOfCoincidence("Tobias ist eine Ente", "german");
+        IndexOfCoincidence ioc_keine_ente = new IndexOfCoincidence("Tobias ist keine Ente", "german");
+        assertEquals(ioc_ente.isBetterThan(ioc_keine_ente), true);
     }
 
 }
